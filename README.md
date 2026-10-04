@@ -1,15 +1,9 @@
-2. Create a README.md with this special header at the very top (required by HF Spaces):
-
-YAML
-
----
 title: TruthGuard Backend
 emoji: 🛡️
 colorFrom: blue
 colorTo: green
 sdk: docker
 pinned: false
-
 
 
 
