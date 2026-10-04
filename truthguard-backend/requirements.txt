@@ -1,0 +1,23 @@
+# TruthGuard AI backend — verified working together on Python 3.13 (works on 3.10+)
+# Install with:  pip install -r requirements.txt
+
+# --- Web framework ---
+fastapi==0.142.2                # the API framework itself
+uvicorn[standard]==0.54.0       # ASGI server that runs FastAPI ("[standard]" adds fast networking extras)
+python-multipart==0.0.32        # REQUIRED for FastAPI file uploads (UploadFile / form-data)
+
+# --- Config & validation ---
+pydantic==2.13.4                # data validation (comes with FastAPI, pinned for reproducibility)
+pydantic-settings==2.15.0       # loads settings from .env / environment variables
+python-dotenv==1.2.4            # .env file parsing (used by pydantic-settings)
+
+# --- Part 1: Deepfake image detection ---
+huggingface_hub==2.1.1          # InferenceClient for HF "Inference Providers" (>=1.0 required — the old
+                                # api-inference.huggingface.co endpoint was decommissioned in late 2025)
+pillow==12.3.0                  # image validation, resizing, re-encoding before upload to HF
+
+# --- Part 2: Fact checking ---
+groq==1.7.0                     # Groq SDK (free-tier LLM inference; default model openai/gpt-oss-20b)
+ddgs==9.16.0                    # DuckDuckGo search, keyless fallback (successor of the frozen
+                                # "duckduckgo-search" package — do NOT install the old name)
+requests==2.33.0                # plain HTTP calls (Tavily search REST API)
